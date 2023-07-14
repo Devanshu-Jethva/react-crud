@@ -6,16 +6,14 @@ import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GetUser } from './GetUser'
-import { useFetchUserData } from '../query/userQuery'
+import { useFetchUsers } from '../query/userQuery'
 
 export const GetAllUsers = () => {
 
-  const { data, isLoading, isError } = useFetchUserData();
+  const { data, isLoading, isError } = useFetchUsers();
   console.log(data);
   const getAllUsers = async () => {
-    // setData(res.data.data)
-    // console.log(res.data.data);
-    if (data.status === 200) {
+    if (data?.status === 200) {
       toast.success('Data fetched successfully....', {
         position: "bottom-right",
         autoClose: 5000,

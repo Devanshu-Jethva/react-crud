@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAddUser } from '../query/userQuery';
 
 
 export const AddUser = () => {
@@ -12,17 +13,19 @@ export const AddUser = () => {
 
   var navigate = useNavigate();
 
-  const submit = async (data) => {
+  const { data, isError, isIdle, isLoading, mutate } = useAddUser();
+
+  const submit = async (formdata) => {
     const newUser = {
-      name: data.name,
-      age: data.age,
-      email: data.email,
-      isActive: data.isActive === "active" ? true : false,
+      name: formdata.name,
+      age: formdata.age,
+      email: formdata.email,
+      isActive: formdata.isActive === "active" ? true : false,
     }
-    const res = await axios.post("https://node5.onrender.com/user/user", newUser)
-    console.log(res.status);
-    console.log(res);
-    if (res.status === 201) {
+
+    mutate(newUser)
+
+    if (data?.status === 201) {
       toast.success('🦄 Wow so easy!', {
         position: "bottom-right",
         autoClose: 5000,
