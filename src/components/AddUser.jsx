@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +12,7 @@ export const AddUser = () => {
 
   var navigate = useNavigate();
 
-  const { data, isError, isIdle, isLoading, mutate } = useAddUser();
+  const { data, isLoading, mutate } = useAddUser();
 
   const submit = async (formdata) => {
     const newUser = {

@@ -1,16 +1,15 @@
 import { Delete, Edit, RemoveRedEye } from '@mui/icons-material'
 import { CircularProgress, IconButton } from '@mui/material'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { GetUser } from './GetUser'
 import { useFetchUsers } from '../query/userQuery'
 
 export const GetAllUsers = () => {
 
-  const { data, isLoading, isError } = useFetchUsers();
+  const { data, isLoading } = useFetchUsers();
   console.log(data);
   const getAllUsers = async () => {
     if (data?.status === 200) {

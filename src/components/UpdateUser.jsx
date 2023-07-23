@@ -37,7 +37,7 @@ export const UpdateUser = () => {
 
     const res = await axios.put("https://node5.onrender.com/user/user/" + id, newUser)
     console.log(res);
-    if (res.status == 200) {
+    if (res.status === 200) {
       toast.success('Data updated successfully...', {
         position: "bottom-right",
         autoClose: 5000,
